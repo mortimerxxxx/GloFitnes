@@ -1,0 +1,19 @@
+{
+  "name": "GloJS-Final-Push",
+  "version": "1.0.0",
+  "description": "",
+  "main": "selectClub.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^4.41.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.12"
+  }
+}
