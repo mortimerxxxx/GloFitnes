@@ -4,7 +4,6 @@ const togglePopUp = () => {
         callbackForm = document.getElementById('callback_form'),
         fixedGift = document.getElementById('gift');
 
-
         document.addEventListener ('click', (event) => {
             let target = event.target;
 
@@ -22,7 +21,8 @@ const togglePopUp = () => {
                 }, 30);
                 
 
-            }else if(target.classList.contains('close_icon') || target.classList.contains('overlay')) {
+            }else if(target.classList.contains('close_icon') || target.classList.contains('overlay') ||
+            target.classList.contains('close-btn')) {
                 const nameInput = document.querySelectorAll('name_input'),
                     phoneInput = document.querySelectorAll('phone_input');
 

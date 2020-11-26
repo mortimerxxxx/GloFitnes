@@ -7,6 +7,7 @@
     <title>Сеть фитнес клубов Тело</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- <script src="./dist/bundle.js" defer></script> -->
     <script src="./dist/bundle.js" defer></script>
     <link rel="stylesheet" href="css/style.min.css">
 </head>
@@ -306,7 +307,7 @@
             <div class="right">
                 <form action="" id="card_order">
                     <div class="time">
-                        <input id="m1" type="radio" name="card-type" value="1" checked>
+                        <input id="m1" type="radio" name="card-type" value="1" checked="">
                         <label for="m1">1 месяц</label>
                         <input id="m2" type="radio" name="card-type" value="6">
                         <label for="m2">6 месяцев</label>
@@ -331,10 +332,10 @@
                     </label>
                     </div>
                     <div class="price">
-                        <div class="price-message input-text"><input name="name" type="text" required
+                        <div class="price-message input-text"><input id="promo" name="name" type="text"
                                                                      placeholder="Промокод"></div>
                         <div class="price-message">Цена:</div>
-                        <div class="price-message" id="price-total">2999</div>
+                        <div class="price-message" id="price-total">1999</div>
                     </div>
                     <input type="hidden" name="form_name" value="Заказать карту">
                     <p class="input-text"><input name="name" type="text" required placeholder="Ваше имя..."></p>
@@ -430,7 +431,7 @@
 
 </footer>
 <div class="wrapper">
-    <a href="#" id="totop"><i class="fa fa-arrow-up" aria-hidden="true"></i>
+    <a id="totop"><i class="fa fa-arrow-up" aria-hidden="true"></i>
     </a>
 </div>
 <div class="popup" id="callback_form">
@@ -507,7 +508,7 @@
         </div>
         <div class="form-content">
             <h4>У нас для вас есть подарок!</h4>
-            <p>Введите промо-код ТЕЛО2019 и получите скидку 30%</p>
+            <p>Введите промо-код ТЕЛО2020 и получите скидку 30%</p>
             <button class="btn close-btn">OK</button>
         </div>
     </div>
