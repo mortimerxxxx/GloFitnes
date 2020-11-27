@@ -1,36 +1,15 @@
 'use strict';
 const sendForm = () => {
-    //Валидация номера телефона
     document.addEventListener('input', event => {
         const target = event.target;
-        if (target.matches('#callback_form2-phone') || 
-        target.matches('#callback_form1-phone') ||
-        target.matches('#callback_form-phone') ||
-        target.matches('#phone') ||
-        target.matches('#callback_footer_form-phone')) {
-            target.value = target.value.replace(/^[\+]?[0-9]{1}[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{17}$/im, '');
-            document.addEventListener('change', event => {
-                if (target.matches('#callback_form2-phone') || 
-                target.matches('#callback_form1-phone') ||
-                target.matches('#callback_form-phone') ||
-                target.matches('#phone') ||
-                target.matches('#callback_footer_form-phone')) {
-                    target.value = target.value.replace(/^\D/gi, '');
-                    target.value = target.value.replace(/\D$/gi, '');
-                    if (target.value.length < 5) {
-                        target.value = '';
-                    } 
-                }
-            });
-        } else if (target.matches('#callback_form2-name') || 
-        target.matches('#callback_form1-name') ||
-        target.matches('#name')) {
+        if (target.matches('.nameClass')) {
             target.value = target.value.replace(/[^А-Яа-яЁе ]/gi, '');
         }
     });
 
-    const errorMessage = 'Что-то пошло не так...',
-        successMessage = 'Спасибо, мы скоро с Вами свяжемся!';
+    const errorMessage = 'Что-то пошло не так... Возможно сервер не отвечает!',
+        successMessage = 'Спасибо, мы скоро с Вами свяжемся!',
+        submitMessage = 'Вам необходимо подтвердить согласие!';
 
     let loadMessage = `<div class="loadMessage"></div>`;
 
@@ -76,65 +55,75 @@ const sendForm = () => {
             body[value[0]] = value[1];
         }
 
+        const check = document.getElementById('check'),
+            check1 = document.getElementById('check1'),
+            check2 = document.getElementById('check2'),
+            cardCheck = document.getElementById('card_check'),
+            footerLetoMozaika = document.getElementById('footer_leto_mozaika'),
+            footerLetoSchelkovo = document.getElementById('footer_leto_schelkovo');
+
+        const thanks = document.getElementById('thanks'),
+            formContentThanks = document.querySelector('.form-content-thanks');
+
         postData(body)
             .then((response) => {
-                if (response.status !== 200) {
+                if (response.status !== 200) {                    
                     throw new Error('status network not 200');
+                } 
+                if (check.checked || check2.checked || cardCheck.checked) {
+                    statusMessage.textContent = successMessage;
+                    statusMessage.style.color = `green`;
+                } else if (check1.checked || footerLetoMozaika.checked || footerLetoSchelkovo.checked) {
+                    thanks.style.display = 'block';
+                    formContentThanks.style.opacity = "0";
+                    let x = 0;
+                    const timer = setInterval(() => {
+                        x += 0.1;
+                        formContentThanks.style.opacity = `${x}`;
+                        if (formContentThanks.style.opacity === "1.1") {
+                            clearInterval(timer);
+                        }
+                    }, 20);
+                } else {
+                    statusMessage.textContent = submitMessage;
+                    statusMessage.style.color = `red`;
                 }
-                statusMessage.textContent = successMessage;
-                statusMessage.style.color = `green`;
+                document.addEventListener('click', (event) => {
+                    const target = event.target;
+                    if (target.classList.contains('close_icon') || 
+                    target.classList.contains('overlay') ||
+                    target.classList.contains('close-btn')) {
+                        let x = 1;
+                        const timer = setInterval(() => {
+                            x -= 0.1;
+                            formContentThanks.style.opacity = `${x}`;
+                            if (formContentThanks.style.opacity === "-0.1") {
+                                clearInterval(timer);
+                                thanks.style.display = "none";
+                            }
+                        }, 1);
+                    }
+                });
             })
-            .catch(error => {
+            .catch(error => {                
                 statusMessage.textContent = errorMessage;
                 statusMessage.style.color = `red`;
                 console.log(error);
             })
             .then(() => {
-                document.querySelectorAll('#callback_form1-phone').forEach((elem)=> {
+                document.querySelectorAll('.phonecall').forEach((elem) => {
                     elem.value = '';
                 });
-                document.querySelectorAll('#callback_form-phone').forEach((elem)=> {
+                document.querySelectorAll('.nameClass').forEach((elem) => {
                     elem.value = '';
                 });
-                document.querySelectorAll('#callback_form1-name').forEach((elem)=> {
-                    elem.value = '';
-                });
-                document.querySelectorAll('#callback_form2-phone').forEach((elem)=> {
-                    elem.value = '';
-                });
-                document.querySelectorAll('#callback_form2-name').forEach((elem)=> {
-                    elem.value = '';
-                });
-                document.querySelectorAll('#name').forEach((elem)=> {
-                    elem.value = '';
-                });
-                document.querySelectorAll('#promo').forEach((elem)=> {
-                    elem.value = '';
-                });
-                document.querySelectorAll('#phone').forEach((elem)=> {
-                    elem.value = '';
-                });
-                document.querySelectorAll('#callback_footer_form-phone').forEach((elem)=> {
-                    elem.value = '';
-                });
-                document.querySelectorAll('#check').forEach((elem)=> {
-                    elem.checked = false;
-                });
-                document.querySelectorAll('#check2').forEach((elem)=> {
-                    elem.checked = false;
-                });
-                document.querySelectorAll('#check1').forEach((elem)=> {
-                    elem.checked = false;
-                });
-                document.querySelectorAll('#card_check').forEach((elem)=> {
-                    elem.checked = false;
-                });
-                document.querySelectorAll('#footer_leto_mozaika').forEach((elem)=> {
-                    elem.checked = false;
-                });
-                document.querySelectorAll('#footer_leto_schelkovo').forEach((elem)=> {
-                    elem.checked = false;
-                });
+                document.getElementById('promo').value = '';
+                document.getElementById('check').checked = false;
+                document.getElementById('check2').checked = false;
+                document.getElementById('check1').checked = false;
+                document.getElementById('card_check').checked = false;
+                document.getElementById('footer_leto_mozaika').checked = false;
+                document.getElementById('footer_leto_schelkovo').checked = false;
             });
     });
 
