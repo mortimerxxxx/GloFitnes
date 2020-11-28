@@ -1,13 +1,11 @@
-/* eslint-disable strict */
 "use strict";
-
 const photoGallery = () => {
-  //style
+
   const style = document.createElement("style");
   style.id = "gallery-style";
   style.textContent = `
     
-       .photo-gallery-images {
+      .photo-gallery-images {
         display: none;
     }
 
@@ -65,14 +63,11 @@ const photoGallery = () => {
         border: 1px solid rgba(204, 204, 204, 0.911);
     }
 
-
     .photo-gallery-dot-active {
         background: #f4c71b;
         border: 1px solid #f4c71b;
     }
 
-
-    
     @media (max-width: 768px) {
 
     .photo-gallery-left {
@@ -83,14 +78,13 @@ const photoGallery = () => {
         display: none;
     }
 }
-
     `;
 
   document.head.append(style);
 
   const galleryBg = document.querySelector(".gallery-bg > .wrapper"),
     gallerySlider = document.querySelector(".gallery-slider"),
-    images = document.querySelectorAll(" .gallery-slider > .slide > img"),
+    images = document.querySelectorAll(".gallery-slider > .slide > img"),
     leftArrow = document.createElement("span"),
     rightArrow = document.createElement("span"),
     buttonsWrapper = document.createElement("div");
@@ -152,9 +146,7 @@ const photoGallery = () => {
           "photo-gallery-image-active"
         )
       ) {
-        images[images.length - 1].classList.remove(
-          "photo-gallery-image-active"
-        );
+        images[images.length - 1].classList.remove("photo-gallery-image-active");
         images[images.length - 1].classList.add("photo-gallery-images");
         images[0].classList.add("photo-gallery-image-active");
         sliderDots[images.length - 1].classList.remove(

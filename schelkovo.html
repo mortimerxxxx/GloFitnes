@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic" rel="stylesheet">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.min.css">
+    <script src="dist/bundle.js" defer></script>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
@@ -21,10 +22,10 @@
                     </div>
                     <div class="club-select">
                         <div class="clubs-list">
-                            <p>Выбрать клуб</p>
-                            <ul>
-                                <li><a href="mozaika.html">Тело мозаика</a></li>
-                                <li><a href="schelkovo.html">Тело щелково</a></li>
+                            <p class="clubs-list-text">Выбрать клуб</p>
+                            <ul id="select-club" class="select-club-active">
+                                <li><a href="./mozaika.html">Тело мозаика</a></li>
+                                <li><a href="./schelkovo.html">Тело щелково</a></li>
                             </ul>
                         </div>
                     </div>
@@ -57,27 +58,27 @@
                 <li class=""><a href="#footer">Контакты</a></li>
             </ul>
             <div class="menu-button hidden-large">
-                <img src="images/menu-button.png" alt="">
+                <img class="burger-icon" src="images/menu-button.png" alt="">
             </div>
         </div>
     </nav>
     <nav class="popup-menu hidden-large">
         <div class="close-menu-btn">
-            <img src="images/delete.png" alt="">
+            <img class="close-menu-btn" src="images/delete.png" alt="">
         </div>
         <ul>
-            <li class=""><a href="index.html#clubs">Клубы</a></li>
-            <li class=""><a href="#services">Услуги</a></li>
-            <li class=""><a href="#cards">Клубные карты</a></li>
+            <li class=""><a class="scroll-list" href="index.html#clubs">Клубы</a></li>
+            <li class=""><a class="scroll-list" href="#services">Услуги</a></li>
+            <li class=""><a class="scroll-list" href="#cards">Клубные карты</a></li>
             <li class=""><a href="#table">Расписание</a></li>
-            <li class=""><a href="#gallery">Галерея</a></li>
-            <li class=""><a href="#footer">Контакты</a></li>
+            <li class=""><a class="scroll-list" href="#gallery">Галерея</a></li>
+            <li class=""><a class="scroll-list" href="#footer">Контакты</a></li>
         </ul>
     </nav>
     <div class="head-slider">
         <div class="wrapper">
             <div class="main-slider">
-                <div class="slide">
+                <div class="slide main-slide">
                     <div class="slide-text">
                         <div class="offer-head">
                             <p class="top">2 круглосуточные</p>
@@ -91,7 +92,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide type2" style="display: none">
+                <div class="slide type2 main-slide" style="display: none">
                     <div class="slide-text">
                         <div class="offer-head">
                             <p class="top">открытый чемпионат</p>
@@ -105,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide" style="display: none">
+                <div class="slide main-slide" style="display: none">
                     <div class="slide-text">
                         <div class="offer-head">
                             <p class="top">без выходных</p>
@@ -120,7 +121,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide type2 type3" style="display: none">
+                <div class="slide type2 type3 main-slide" style="display: none">
                     <div class="slide-text">
                         <div class="offer-head">
                             <p class="top">Круглосуточно</p>
@@ -134,7 +135,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="slide type2"  style="display: none">
+                <div class="slide type2 main-slide"  style="display: none">
                     <div class="slide-text">
                         <div class="offer-head">
                             <p class="top">Пробное занятие</p>
@@ -525,7 +526,7 @@
     </div>
 </footer>
 <div class="wrapper">
-    <a href="#" id="totop"><i class="fa fa-arrow-up" aria-hidden="true"></i>
+    <a id="totop"><i class="fa fa-arrow-up" aria-hidden="true"></i>
     </a>
 </div>
 <div class="popup" id="callback_form">
