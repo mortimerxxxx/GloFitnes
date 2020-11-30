@@ -19,7 +19,6 @@ const togglePopUp = () => {
                         clearInterval(timer);
                     }
                 }, 30);
-                
 
             }else if(target.classList.contains('close_icon') || target.classList.contains('overlay') ||
             target.classList.contains('close-btn')) {
@@ -74,7 +73,7 @@ const togglePopUp = () => {
                         if(fixedGift.style.opacity === '1') {
                             clearInterval(timer);
                         }
-                    }, 30);
+                }, 30);
             }
 
         });
