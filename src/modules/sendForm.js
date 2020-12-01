@@ -10,15 +10,14 @@ const sendForm = () => {
     const submitMessage = 'Вам необходимо подтвердить согласие!',
         chooseClubPlease = 'Выберите клуб!';
 
-    let loadMessage = `<div class="loadMessage"></div>`;
-
     const form1 = document.getElementById('form1'),
         form2 = document.getElementById('form2'),
         bannerForm = document.getElementById('banner-form'),
         cardOrder = document.getElementById('card_order'),
         footerForm = document.getElementById('footer_form');
 
-    const statusMessage = document.createElement('div');
+    let statusMessage = document.createElement('div');
+    let loadMessage = `<div class="loadMessage"></div>`;
     
     document.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -84,7 +83,7 @@ const sendForm = () => {
                 }, 1);
             }
         });
-
+        
         statusMessage.innerHTML = loadMessage;
         const removeStatusMessage = () => {
             setTimeout(() => {
@@ -93,13 +92,14 @@ const sendForm = () => {
             }, 2000);
             statusMessage.remove();
         };
-        setTimeout(removeStatusMessage, 5000);
+        setTimeout(removeStatusMessage, 3000);
 
         const formData = new FormData(shell);
         let body = {};
         for (let value of formData.entries()) {
             body[value[0]] = value[1];
         }
+
 
         postData(body)
             .then((response) => {
@@ -112,7 +112,7 @@ const sendForm = () => {
                 const timer = setInterval(() => {
                     x += 0.1;
                     formContentThanks.style.opacity = `${x}`;
-                    if (formContentThanks.style.opacity === "1.1") {
+                    if (formContentThanks.style.opacity === "1") {
                         clearInterval(timer);
                         }
                 }, 20);
@@ -137,7 +137,7 @@ const sendForm = () => {
                 const timer = setInterval(() => {
                     x += 0.1;
                     formContentThanks.style.opacity = `${x}`;
-                    if (formContentThanks.style.opacity === "1.1") {
+                    if (formContentThanks.style.opacity === "1") {
                         clearInterval(timer);
                         }
                 }, 20);       

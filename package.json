@@ -1,7 +1,6 @@
 {
   "name": "fitness",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --open --mode-development",
@@ -12,9 +11,18 @@
   "license": "ISC",
   "devDependencies": {
     "path": "^0.12.7",
-    "webpack": "^4.41.0",
+    "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.7.2"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mortimerxxxx/GloFitnes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mortimerxxxx/GloFitnes/issues"
+  },
+  "homepage": "https://github.com/mortimerxxxx/GloFitnes#readme",
+  "description": ""
 }

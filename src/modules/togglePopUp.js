@@ -2,7 +2,8 @@ const togglePopUp = () => {
     'use strict';
     const freeVisitForm = document.getElementById('free_visit_form'),
         callbackForm = document.getElementById('callback_form'),
-        fixedGift = document.getElementById('gift');
+        fixedGift = document.getElementById('gift'),
+        formContentThanks = document.querySelector('.form-content-thanks');
 
         document.addEventListener ('click', (event) => {
             let target = event.target;
